@@ -1,0 +1,1332 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://Scripts/GameScript.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/DebugEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/icon.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/hp_bar.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/DebugTowerTemplate.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/debugTower.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Button_pressed.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/TowerRangeRadius150ps.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/BulletTemplate.gd" type="Script" id=9]
+[ext_resource path="res://Sprites/bullet.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/TileTemplate.gd" type="Script" id=11]
+[ext_resource path="res://Sprites/not-path.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/not-path-hover.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/tile_selected.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/path.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/KingCell.gd" type="Script" id=16]
+[ext_resource path="res://Sprites/path_end.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/path_start.png" type="Texture" id=18]
+[ext_resource path="res://Scripts/MenusScript.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/NextWaveButton.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/HelpDialog.gd" type="Script" id=21]
+[ext_resource path="res://Sprites/Button.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Button_hover.png" type="Texture" id=23]
+[ext_resource path="res://Scripts/DebugTowerButton.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/DebugTowerSellButton.gd" type="Script" id=25]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 150.0
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="Curve2D" id=7]
+
+bake_interval = 16.0
+_data = {
+"points": PoolVector2Array(  )
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Gradient" id=8]
+
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+
+flags = 4
+gradient = SubResource( 8 )
+width = 96
+
+[sub_resource type="Gradient" id=10]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0, 0, 1, 1, 0, 1, 0.90625, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+
+flags = 4
+gradient = SubResource( 10 )
+width = 96
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Gradient" id=12]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0.804688, 1, 0, 1, 1, 0, 0, 1 )
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="GradientTexture" id=13]
+
+flags = 4
+gradient = SubResource( 12 )
+width = 96
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Gradient" id=14]
+
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+
+flags = 4
+gradient = SubResource( 14 )
+width = 2048
+
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="Level0" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Templates" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
+z_index = -2
+_sections_unfolded = [ "Material", "Visibility", "Z Index" ]
+
+[node name="DebugEnemyTemplate" type="Area2D" parent="Templates" index="0" groups=[
+"Enemies",
+]]
+
+editor/display_folded = true
+position = Vector2( -428.84, 326.586 )
+z_index = 1
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Material", "Z Index", "collision" ]
+speed = 3
+
+[node name="Sprite" type="Sprite" parent="Templates/DebugEnemyTemplate" index="0"]
+
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/DebugEnemyTemplate" index="1"]
+
+visible = false
+scale = Vector2( 0.5, 0.5 )
+z_as_relative = false
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="HPBar" type="TextureProgress" parent="Templates/DebugEnemyTemplate" index="2"]
+
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -16.0
+margin_top = 13.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 5.0
+step = 1.0
+page = 0.0
+value = 2.0
+exp_edit = false
+rounded = true
+texture_under = null
+texture_over = null
+texture_progress = ExtResource( 4 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
+
+[node name="DebugTowerTemplate" type="Area2D" parent="Templates" index="1" groups=[
+"Towers",
+]]
+
+position = Vector2( -512, 544 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+reload_time = 1
+
+[node name="DefaultSprite" type="Sprite" parent="Templates/DebugTowerTemplate" index="0"]
+
+texture = ExtResource( 6 )
+
+[node name="SelectedSprite" type="Sprite" parent="Templates/DebugTowerTemplate" index="1"]
+
+visible = false
+texture = ExtResource( 7 )
+
+[node name="Range" type="CollisionShape2D" parent="Templates/DebugTowerTemplate" index="2"]
+
+shape = SubResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="ClickShape" type="CollisionShape2D" parent="Templates/DebugTowerTemplate" index="3"]
+
+shape = SubResource( 3 )
+
+[node name="ClickableArea" type="Area2D" parent="Templates/DebugTowerTemplate" index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="ClickShape" type="CollisionShape2D" parent="Templates/DebugTowerTemplate/ClickableArea" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="RangeSprite" type="Sprite" parent="Templates/DebugTowerTemplate/ClickableArea" index="1"]
+
+visible = false
+z_index = 2
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="BulletTemplate" type="Area2D" parent="Templates" index="2" groups=[
+"Bullets",
+]]
+
+editor/display_folded = true
+position = Vector2( -440.815, 201.515 )
+scale = Vector2( 3, 3 )
+z_index = 1
+z_as_relative = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 9 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+speed = 30
+
+[node name="Sprite" type="Sprite" parent="Templates/BulletTemplate" index="0"]
+
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/BulletTemplate" index="1"]
+
+visible = false
+shape = SubResource( 4 )
+
+[node name="TileTemplate" type="Area2D" parent="Templates" index="3"]
+
+editor/display_folded = true
+position = Vector2( -448, 64 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DefaultSprite" type="Sprite" parent="Templates/TileTemplate" index="0"]
+
+texture = ExtResource( 12 )
+
+[node name="HoverSprite" type="Sprite" parent="Templates/TileTemplate" index="1"]
+
+visible = false
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="SelectedSprite" type="Sprite" parent="Templates/TileTemplate" index="2"]
+
+visible = false
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/TileTemplate" index="3"]
+
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathTemplate" type="Area2D" parent="Templates" index="4"]
+
+editor/display_folded = true
+position = Vector2( -512, 64 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PathSprite" type="Sprite" parent="Templates/PathTemplate" index="0"]
+
+texture = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Templates/PathTemplate" index="1"]
+
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="TilesContainer" type="Node2D" parent="." index="1"]
+
+z_index = -2
+_sections_unfolded = [ "Z Index" ]
+
+[node name="PathContainer" type="Node2D" parent="." index="2"]
+
+z_index = -2
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="PathEndTile" type="Area2D" parent="PathContainer" index="0"]
+
+position = Vector2( 352, 544 )
+z_index = 1
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="path" type="Sprite" parent="PathContainer/PathEndTile" index="0"]
+
+texture = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathContainer/PathEndTile" index="1"]
+
+scale = Vector2( 1e-05, 1 )
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathStartTile" type="Area2D" parent="PathContainer" index="1"]
+
+editor/display_folded = true
+position = Vector2( 96, -32 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="path" type="Sprite" parent="PathContainer/PathStartTile" index="0"]
+
+texture = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathContainer/PathStartTile" index="1"]
+
+shape = SubResource( 6 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Path" type="Path2D" parent="PathContainer" index="2"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PathFollow" type="PathFollow2D" parent="PathContainer/Path" index="0"]
+
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = false
+loop = false
+lookahead = 0.001
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="BulletsContainer" type="Node2D" parent="." index="3"]
+
+z_index = -2
+_sections_unfolded = [ "Z Index" ]
+
+[node name="GUI" type="Node2D" parent="." index="4"]
+
+position = Vector2( -10.0701, 7.55258 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="MenusField" type="ColorRect" parent="GUI" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 522.0
+margin_top = -8.0
+margin_right = 778.0
+margin_bottom = 632.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.921875, 0.84901, 0.655396, 1 )
+script = ExtResource( 19 )
+_sections_unfolded = [ "Mouse" ]
+
+[node name="NextWaveButton" type="Button" parent="GUI/MenusField" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 117.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "NEXT WAVE"
+flat = false
+align = 1
+script = ExtResource( 20 )
+
+[node name="HelpButton" type="Button" parent="GUI/MenusField" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_top = 32.0
+margin_right = 204.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "HELP"
+flat = false
+align = 1
+
+[node name="HelpDialog" type="AcceptDialog" parent="GUI/MenusField/HelpButton" index="0"]
+
+pause_mode = 2
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -512.0
+margin_top = 64.0
+margin_right = -224.0
+margin_bottom = 448.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = true
+window_title = "Help"
+resizable = false
+dialog_hide_on_ok = true
+script = ExtResource( 21 )
+_sections_unfolded = [ "Dialog", "Focus", "Material", "Mouse", "Pause", "Popup", "Visibility" ]
+
+[node name="LifeCounter" type="Node2D" parent="GUI/MenusField" index="2"]
+
+editor/display_folded = true
+position = Vector2( 213.578, 127.658 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="ColorRect" parent="GUI/MenusField/LifeCounter" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 24.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.774231, 0.901113, 0.921875, 1 )
+
+[node name="Description" type="Label" parent="GUI/MenusField/LifeCounter" index="1"]
+
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -36.0
+margin_right = 24.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "LIFES:"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CounterBox" type="ColorRect" parent="GUI/MenusField/LifeCounter" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -29.0
+margin_top = 3.0
+margin_right = 11.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Counter" type="Label" parent="GUI/MenusField/LifeCounter/CounterBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="MoneyCounter" type="Node2D" parent="GUI/MenusField" index="3"]
+
+editor/display_folded = true
+position = Vector2( 64.0701, 128.447 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="ColorRect" parent="GUI/MenusField/MoneyCounter" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 24.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.799109, 0.941406, 0.797989, 1 )
+
+[node name="Description" type="Label" parent="GUI/MenusField/MoneyCounter" index="1"]
+
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -36.0
+margin_right = 24.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "GOLD:"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CounterBox" type="ColorRect" parent="GUI/MenusField/MoneyCounter" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -29.0
+margin_top = 3.0
+margin_right = 11.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Counter" type="Label" parent="GUI/MenusField/MoneyCounter/CounterBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="PointsCounter" type="Node2D" parent="GUI/MenusField" index="4"]
+
+position = Vector2( 138.448, 128.178 )
+scale = Vector2( 1.02701, 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="ColorRect" parent="GUI/MenusField/PointsCounter" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 24.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.098309, 0.273301, 0.738281, 1 )
+
+[node name="Description" type="Label" parent="GUI/MenusField/PointsCounter" index="1"]
+
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -36.0
+margin_right = 24.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "POINTS:"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CounterBox" type="ColorRect" parent="GUI/MenusField/PointsCounter" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -29.0
+margin_top = 3.0
+margin_right = 11.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Counter" type="Label" parent="GUI/MenusField/PointsCounter/CounterBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -12.0
+margin_top = 5.0
+margin_right = 52.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="TemperatureIndicator" type="Control" parent="GUI/MenusField" index="5"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_top = 255.0
+margin_right = 256.0
+margin_bottom = 319.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="GUI/MenusField/TemperatureIndicator" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -64.0
+margin_top = -32.0
+margin_right = 30.0
+margin_bottom = -18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_as_outline = 0
+text = "TEMPERATURE:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="Value" type="Label" parent="GUI/MenusField/TemperatureIndicator" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 47.0
+margin_top = -32.0
+margin_right = 77.0
+margin_bottom = -18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_as_outline = 0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="MinusSign" type="TextureProgress" parent="GUI/MenusField/TemperatureIndicator" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -64.0
+margin_right = 32.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -1.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = SubResource( 9 )
+texture_over = null
+texture_progress = SubResource( 11 )
+fill_mode = 1
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Textures" ]
+
+[node name="PlusSign" type="TextureProgress" parent="GUI/MenusField/TemperatureIndicator" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_right = 128.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -1.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = SubResource( 9 )
+texture_over = null
+texture_progress = SubResource( 13 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Textures" ]
+
+[node name="WaterIndicator" type="Control" parent="GUI/MenusField" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_top = 320.0
+margin_right = 256.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="GUI/MenusField/WaterIndicator" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -64.0
+margin_top = -32.0
+margin_right = 30.0
+margin_bottom = -18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_as_outline = 0
+text = "WATER"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="Value" type="Label" parent="GUI/MenusField/WaterIndicator" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 47.0
+margin_top = -32.0
+margin_right = 77.0
+margin_bottom = -18.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_as_outline = 0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="MinusSign" type="TextureProgress" parent="GUI/MenusField/WaterIndicator" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -64.0
+margin_right = 32.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -1.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = SubResource( 9 )
+texture_over = null
+texture_progress = SubResource( 11 )
+fill_mode = 1
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Textures" ]
+
+[node name="PlusSign" type="TextureProgress" parent="GUI/MenusField/WaterIndicator" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 32.0
+margin_right = 128.0
+margin_bottom = 1.0
+rect_scale = Vector2( 1, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -1.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = SubResource( 9 )
+texture_over = null
+texture_progress = SubResource( 13 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Textures" ]
+
+[node name="DebugTower" type="Area2D" parent="GUI/MenusField" index="7" groups=[
+"Towers",
+]]
+
+editor/display_folded = true
+position = Vector2( 64.0701, 448.447 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="GUI/MenusField/DebugTower" index="0"]
+
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -47.0
+margin_right = 34.0
+margin_bottom = -33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "FirstTower"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="GUI/MenusField/DebugTower" index="1"]
+
+texture = ExtResource( 6 )
+normal_map = SubResource( 15 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GUI/MenusField/DebugTower" index="2"]
+
+visible = false
+position = Vector2( 0, 14.5 )
+scale = Vector2( 1, 1.41429 )
+z_index = 3
+z_as_relative = false
+shape = SubResource( 16 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="BuyButton" type="TextureButton" parent="GUI/MenusField/DebugTower" index="3" groups=[
+"BuyButtons",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 23 )
+stretch_mode = 4
+script = ExtResource( 24 )
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="Label" type="Label" parent="GUI/MenusField/DebugTower/BuyButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "BUY"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="SellButton" type="TextureButton" parent="GUI/MenusField/DebugTower" index="4" groups=[
+"SellButtons",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 23 )
+stretch_mode = 4
+script = ExtResource( 25 )
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="Label" type="Label" parent="GUI/MenusField/DebugTower/SellButton" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SELL"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="GameOverText" type="RichTextLabel" parent="GUI" index="1"]
+
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = 150.0
+margin_right = 487.0
+margin_bottom = 491.0
+rect_scale = Vector2( 6, 6 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "GAME OVER"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Material", "Rect", "Visibility" ]
+
+[node name="GameField" type="ColorRect" parent="GUI" index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 512.0
+margin_bottom = 640.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.62871, 0.514984, 0.878906, 1 )
+_sections_unfolded = [ "Material", "Mouse", "Visibility" ]
+
+[connection signal="area_entered" from="Templates/DebugEnemyTemplate" to="Templates/DebugEnemyTemplate" method="_on_DebugEnemyTemplate_area_entered"]
+
+[connection signal="area_entered" from="Templates/DebugTowerTemplate" to="Templates/DebugTowerTemplate" method="_on_DebugTowerTemplate_area_entered"]
+
+[connection signal="area_exited" from="Templates/DebugTowerTemplate" to="Templates/DebugTowerTemplate" method="_on_DebugTowerTemplate_area_exited"]
+
+[connection signal="input_event" from="Templates/DebugTowerTemplate" to="Templates/DebugTowerTemplate" method="_on_DebugTowerTemplate_input_event"]
+
+[connection signal="mouse_entered" from="Templates/DebugTowerTemplate/ClickableArea" to="Templates/DebugTowerTemplate" method="_on_ClickableArea_mouse_entered"]
+
+[connection signal="mouse_exited" from="Templates/DebugTowerTemplate/ClickableArea" to="Templates/DebugTowerTemplate" method="_on_ClickableArea_mouse_exited"]
+
+[connection signal="input_event" from="Templates/TileTemplate" to="Templates/TileTemplate" method="_on_Cell0_input_event"]
+
+[connection signal="mouse_entered" from="Templates/TileTemplate" to="Templates/TileTemplate" method="_on_Cell0_mouse_entered"]
+
+[connection signal="mouse_exited" from="Templates/TileTemplate" to="Templates/TileTemplate" method="_on_Cell0_mouse_exited"]
+
+[connection signal="area_entered" from="PathContainer/PathEndTile" to="PathContainer/PathEndTile" method="_on_PathEndTile_area_entered"]
+
+[connection signal="pressed" from="GUI/MenusField/NextWaveButton" to="GUI/MenusField/NextWaveButton" method="_on_NextWaveButton_pressed"]
+
+[connection signal="pressed" from="GUI/MenusField/HelpButton" to="GUI/MenusField/HelpButton/HelpDialog" method="_on_HelpButton_pressed"]
+
+[connection signal="confirmed" from="GUI/MenusField/HelpButton/HelpDialog" to="GUI/MenusField/HelpButton/HelpDialog" method="_on_HelpDialog_confirmed"]
+
+[connection signal="mouse_entered" from="GUI/MenusField/DebugTower" to="GUI/MenusField" method="_on_DebugTower_mouse_entered"]
+
+[connection signal="mouse_exited" from="GUI/MenusField/DebugTower" to="GUI/MenusField" method="_on_DebugTower_mouse_exited"]
+
+[connection signal="pressed" from="GUI/MenusField/DebugTower/BuyButton" to="GUI/MenusField/DebugTower/BuyButton" method="_on_BuyButton_pressed"]
+
+[connection signal="pressed" from="GUI/MenusField/DebugTower/SellButton" to="GUI/MenusField/DebugTower/SellButton" method="_on_SellButton_pressed"]
+
+
